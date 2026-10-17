@@ -101,7 +101,7 @@ login()
 
 ######################################################
 
-BASE_DIR = r"C:\Users\pc\Downloads\manuscript"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MORTALITY_MODEL_PATH = os.path.join(BASE_DIR, "icu_mortality_xgboost.pkl")
 MORTALITY_PREPROCESSOR_PATH = os.path.join(BASE_DIR, "icu_mortality_preprocessor.pkl")
 LOS_MODEL_PATH = os.path.join(BASE_DIR, "icu_los_random_forest.pkl")
