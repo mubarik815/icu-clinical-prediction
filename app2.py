@@ -52,7 +52,6 @@ with st.sidebar:
     st.markdown("---")
     st.caption("ICU Clinical Prediction System")
 
-
 # ============================================================
 # LOGIN / PASSWORD PROTECTION
 # ============================================================
@@ -65,17 +64,35 @@ def login():
         st.session_state.authenticated = False
 
     if not st.session_state.authenticated:
+
         st.title("🔐 ICU Clinical Prediction System")
         st.subheader("Please log in to continue")
 
+        # Display default login credentials
+        st.info("""
+        **Default Login Credentials**
+
+        👤 Username: `mubarik`
+
+        🔑 Password: `8100`
+        """)
+
         with st.form("login_form"):
-            username = st.text_input("Username")
+            username = st.text_input(
+                "Username",
+                value="mubarik"
+            )
+
             password = st.text_input(
                 "Password",
+                value="8100",
                 type="password"
             )
 
-            submitted = st.form_submit_button("Login")
+            submitted = st.form_submit_button(
+                "Login",
+                use_container_width=True
+            )
 
             if submitted:
                 if (
@@ -83,6 +100,7 @@ def login():
                     and password == VALID_PASSWORD
                 ):
                     st.session_state.authenticated = True
+                    st.success("Login successful!")
                     st.rerun()
                 else:
                     st.error("❌ Incorrect username or password.")
@@ -95,9 +113,6 @@ def login():
 # ============================================================
 
 login()
-
-
-
 
 ######################################################
 
